@@ -4,45 +4,41 @@ import { useInView } from "framer-motion";
 export default function AnimatedNumber({ value, duration = 1.8, className = "" }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
-  const [display, setDisplay] = useState(0);
+  const [display, setDisplay] = useState(value); // start showing the REAL value
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
+    if (hasAnimated) return;
     if (!inView) return;
 
-    // Parse "1,200+" into { prefix: "", number: 1200, suffix: "+" }
+    // Parse "1,200+" → { prefix: "", number: 1200, suffix: "+" }
     const match = String(value).match(/^([^\d]*)([\d,\.]+)(.*)$/);
-    if (!match) {
-      setDisplay(value);
-      return;
-    }
+    if (!match) return;
 
     const [, prefix, numStr, suffix] = match;
     const target = parseFloat(numStr.replace(/,/g, ""));
     const isFloat = numStr.includes(".");
-    const start = performance.now();
+    const startTime = performance.now();
+    setHasAnimated(true);
 
     const tick = (now) => {
-      const elapsed = (now - start) / 1000;
+      const elapsed = (now - startTime) / 1000;
       const progress = Math.min(elapsed / duration, 1);
-      // easeOutExpo — feels premium
       const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
       const current = target * eased;
 
-      let formatted;
-      if (isFloat) {
-        formatted = current.toFixed(1);
-      } else {
-        formatted = Math.round(current).toLocaleString();
-      }
+      const formatted = isFloat
+        ? current.toFixed(1)
+        : Math.round(current).toLocaleString();
 
       setDisplay(`${prefix}${formatted}${suffix}`);
 
       if (progress < 1) requestAnimationFrame(tick);
-      else setDisplay(value); // snap to exact final value
+      else setDisplay(value);
     };
 
     requestAnimationFrame(tick);
-  }, [inView, value, duration]);
+  }, [inView, value, duration, hasAnimated]);
 
   return (
     <span ref={ref} className={className}>
