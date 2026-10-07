@@ -4,14 +4,13 @@ import { useInView } from "framer-motion";
 export default function AnimatedNumber({ value, duration = 1.8, className = "" }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
-  const [display, setDisplay] = useState(value); // start showing the REAL value
+  const [display, setDisplay] = useState(value);
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
     if (hasAnimated) return;
     if (!inView) return;
 
-    // Parse "1,200+" → { prefix: "", number: 1200, suffix: "+" }
     const match = String(value).match(/^([^\d]*)([\d,\.]+)(.*)$/);
     if (!match) return;
 

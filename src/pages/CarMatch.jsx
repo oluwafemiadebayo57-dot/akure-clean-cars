@@ -149,17 +149,17 @@ export default function CarMatch() {
           <div className="lg:col-span-7">
             <motion.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 text-xs font-medium tracking-widest text-slate-500 dark:text-slate-400 mb-6"
+              className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-slate-500 dark:text-slate-400 mb-6"
             >
-              <span className="w-8 h-px bg-gold" />
+              <span className="w-8 h-px bg-orange-500" />
               SIGNATURE TOOL — EXCLUSIVE
             </motion.div>
             <motion.h1
               variants={fadeUp}
-              className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] text-ink dark:text-white"
+              className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] text-navy dark:text-white"
             >
               Akure Car Match
-              <em className="text-brand-600">.</em>
+              <span className="text-orange-500">.</span>
             </motion.h1>
           </div>
           <motion.div variants={fadeUp} className="lg:col-span-5 lg:pb-3">
@@ -183,10 +183,10 @@ export default function CarMatch() {
           {/* Progress */}
           <div className="mb-12">
             <div className="flex items-baseline justify-between mb-4">
-              <span className="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-medium">
+              <span className="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-semibold">
                 Question {step + 1} of {questions.length}
               </span>
-              <span className="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-medium">
+              <span className="text-xs uppercase tracking-widest text-orange-500 font-semibold">
                 {Math.round(((step + 1) / questions.length) * 100)}%
               </span>
             </div>
@@ -195,7 +195,7 @@ export default function CarMatch() {
                 <div
                   key={i}
                   className={`h-1 flex-1 rounded-full transition-colors duration-500 ${
-                    i <= step ? "bg-ink dark:bg-white" : "bg-slate-200 dark:bg-slate-800"
+                    i <= step ? "bg-orange-500" : "bg-slate-200 dark:bg-white/10"
                   }`}
                 />
               ))}
@@ -210,9 +210,9 @@ export default function CarMatch() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0F141A] p-8 md:p-12"
+              className="rounded-3xl border border-slate-200 dark:border-white/5 bg-white dark:bg-[#0A1220] p-8 md:p-12"
             >
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-ink dark:text-white leading-[1.05] mb-10">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-navy dark:text-white leading-[1.05] mb-10">
                 {questions[step].q}
               </h2>
               <div className="grid sm:grid-cols-2 gap-3">
@@ -220,13 +220,13 @@ export default function CarMatch() {
                   <button
                     key={opt.label}
                     onClick={() => pick(questions[step].key, opt.value)}
-                    className="group text-left px-6 py-5 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-ink dark:hover:border-white bg-transparent hover:bg-slate-50 dark:hover:bg-slate-900 transition-all"
+                    className="group text-left px-6 py-5 rounded-2xl border border-slate-200 dark:border-white/5 hover:border-orange-500 dark:hover:border-orange-500 hover:bg-orange-50 dark:hover:bg-orange-500/5 transition-all"
                   >
                     <span className="flex items-center justify-between">
-                      <span className="font-medium text-ink dark:text-white">
+                      <span className="font-semibold text-navy dark:text-white">
                         {opt.label}
                       </span>
-                      <span className="text-slate-400 group-hover:text-ink dark:group-hover:text-white transition-colors">
+                      <span className="text-slate-400 group-hover:text-orange-500 transition-colors">
                         →
                       </span>
                     </span>
@@ -239,7 +239,7 @@ export default function CarMatch() {
           {step > 0 && (
             <button
               onClick={() => setStep(step - 1)}
-              className="mt-6 text-xs uppercase tracking-widest font-medium text-slate-500 dark:text-slate-400 hover:text-ink dark:hover:text-white transition-colors"
+              className="mt-6 text-xs uppercase tracking-widest font-semibold text-slate-500 dark:text-slate-400 hover:text-orange-500 transition-colors"
             >
               ← Back
             </button>
@@ -255,17 +255,17 @@ export default function CarMatch() {
           className="text-center py-32"
         >
           <div className="relative inline-flex items-center justify-center w-24 h-24 mb-8">
-            <div className="absolute inset-0 rounded-full border-2 border-slate-200 dark:border-slate-800" />
+            <div className="absolute inset-0 rounded-full border-2 border-slate-200 dark:border-white/10" />
             <motion.div
-              className="absolute inset-0 rounded-full border-2 border-transparent border-t-ink dark:border-t-white"
+              className="absolute inset-0 rounded-full border-2 border-transparent border-t-orange-500"
               animate={{ rotate: 360 }}
               transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
             />
-            <span className="font-display text-2xl text-ink dark:text-white">
+            <span className="font-display text-2xl text-navy dark:text-white">
               9
             </span>
           </div>
-          <div className="font-display text-3xl text-ink dark:text-white mb-2">
+          <div className="font-display text-3xl text-navy dark:text-white mb-2">
             Matching you with the right cars.
           </div>
           <p className="text-slate-500 dark:text-slate-400">
@@ -284,14 +284,14 @@ export default function CarMatch() {
           {/* Results header */}
           <motion.div variants={fadeUp} className="grid lg:grid-cols-12 gap-8 items-end mb-16">
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 text-xs font-medium tracking-widest text-slate-500 dark:text-slate-400 mb-6">
-                <span className="w-8 h-px bg-gold" />
+              <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-slate-500 dark:text-slate-400 mb-6">
+                <span className="w-8 h-px bg-orange-500" />
                 YOUR MATCHES
               </div>
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] text-ink dark:text-white">
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] text-navy dark:text-white">
                 Three cars,
                 <br />
-                <em className="text-brand-600">picked for you.</em>
+                <span className="text-orange-500">picked for you.</span>
               </h1>
             </div>
             <div className="lg:col-span-5 lg:pb-3">
@@ -307,7 +307,7 @@ export default function CarMatch() {
             {results.map(({ car, score }, i) => (
               <motion.div key={car.id} variants={fadeUp}>
                 <div className="relative">
-                  <div className="absolute -top-3 -left-3 z-10 w-10 h-10 rounded-full flex items-center justify-center font-display text-lg bg-ink dark:bg-white text-white dark:text-ink shadow-lg">
+                  <div className="absolute -top-3 -left-3 z-10 w-10 h-10 rounded-full flex items-center justify-center font-display text-lg bg-orange-500 text-white shadow-lg shadow-orange-500/30">
                     {i + 1}
                   </div>
                   <CarCard car={car} matchScore={score} />
@@ -319,18 +319,17 @@ export default function CarMatch() {
           {/* Actions */}
           <motion.div
             variants={fadeUp}
-            className="flex flex-wrap gap-4 justify-center pt-8 border-t border-slate-200 dark:border-slate-800"
+            className="flex flex-wrap gap-4 justify-center pt-8 border-t border-slate-200 dark:border-white/5"
           >
             <button
               onClick={restart}
-              className="inline-flex items-center gap-2 px-6 py-3.5 font-medium rounded-full border border-slate-300 dark:border-slate-700 text-ink dark:text-white hover:border-ink dark:hover:border-white transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3.5 font-semibold rounded-full border-2 border-slate-300 dark:border-slate-700 text-navy dark:text-white hover:border-orange-500 dark:hover:border-orange-500 hover:text-orange-500 transition-colors"
             >
               Retake the quiz
             </button>
             <a
               href="/inventory"
-              className="inline-flex items-center gap-2 px-6 py-3.5 font-medium rounded-full transition-all"
-              style={{ backgroundColor: "#0F172A", color: "#ffffff" }}
+              className="inline-flex items-center gap-2 px-6 py-3.5 font-semibold rounded-full bg-orange-500 hover:bg-orange-600 text-white transition-colors shadow-lg shadow-orange-500/20"
             >
               Browse full inventory →
             </a>

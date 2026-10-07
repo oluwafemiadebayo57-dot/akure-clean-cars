@@ -48,20 +48,20 @@ export default function Inventory() {
         <div className="lg:col-span-7">
           <motion.div
             variants={fadeUp}
-            className="inline-flex items-center gap-2 text-xs font-medium tracking-widest text-slate-500 dark:text-slate-400 mb-6"
+            className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-slate-500 dark:text-slate-400 mb-6"
           >
-            <span className="w-8 h-px bg-gold" />
+            <span className="w-8 h-px bg-orange-500" />
             FULL INVENTORY
           </motion.div>
           <motion.h1
             variants={fadeUp}
-            className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] text-ink dark:text-white"
+            className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.95] text-navy dark:text-white"
           >
             Every car we have,
             <br />
-            <em className="text-slate-400 dark:text-slate-600">
+            <span className="text-slate-400 dark:text-slate-600">
               ready to inspect.
-            </em>
+            </span>
           </motion.h1>
         </div>
         <motion.div variants={fadeUp} className="lg:col-span-5 lg:pb-3">
@@ -77,30 +77,30 @@ export default function Inventory() {
         initial="hidden"
         animate="show"
         variants={fadeUp}
-        className="sticky top-16 z-30 mb-12 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-4 backdrop-blur bg-cream/80 dark:bg-[#0B0F14]/80 border-y border-slate-200 dark:border-slate-800"
+        className="sticky top-16 z-30 mb-12 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-4 backdrop-blur bg-[#FAFAF7]/85 dark:bg-[#0A1220]/85 border-y border-slate-200 dark:border-white/5"
       >
         <div className="flex flex-wrap gap-x-8 gap-y-4 items-center">
           {/* Count */}
           <div className="flex items-baseline gap-2">
-            <span className="font-display text-3xl text-ink dark:text-white">
+            <span className="font-display text-3xl text-navy dark:text-white">
               {filtered.length}
             </span>
-            <span className="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-medium">
+            <span className="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-semibold">
               {filtered.length === 1 ? "car" : "cars"}
             </span>
           </div>
 
-          <div className="h-8 w-px bg-slate-200 dark:bg-slate-800 hidden sm:block" />
+          <div className="h-8 w-px bg-slate-200 dark:bg-white/5 hidden sm:block" />
 
           {/* Body Type */}
           <div className="flex items-center gap-3">
-            <label className="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-medium">
+            <label className="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-semibold">
               Body
             </label>
             <select
               value={body}
               onChange={(e) => setBody(e.target.value)}
-              className="bg-transparent border-b border-slate-300 dark:border-slate-700 text-ink dark:text-white text-sm font-medium py-1 focus:outline-none focus:border-ink dark:focus:border-white transition-colors cursor-pointer"
+              className="bg-transparent border-b border-slate-300 dark:border-slate-700 text-navy dark:text-white text-sm font-semibold py-1 focus:outline-none focus:border-orange-500 transition-colors cursor-pointer"
             >
               <option>All</option>
               <option>Sedan</option>
@@ -111,7 +111,7 @@ export default function Inventory() {
 
           {/* Price */}
           <div className="flex items-center gap-3">
-            <label className="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-medium">
+            <label className="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-semibold">
               Up to ₦{(maxPrice / 1e6).toFixed(0)}M
             </label>
             <input
@@ -121,19 +121,19 @@ export default function Inventory() {
               step="1000000"
               value={maxPrice}
               onChange={(e) => setMaxPrice(+e.target.value)}
-              className="w-40 accent-brand-600 cursor-pointer"
+              className="w-40 accent-orange-500 cursor-pointer"
             />
           </div>
 
           {/* Sort */}
           <div className="flex items-center gap-3">
-            <label className="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-medium">
+            <label className="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-semibold">
               Sort
             </label>
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value)}
-              className="bg-transparent border-b border-slate-300 dark:border-slate-700 text-ink dark:text-white text-sm font-medium py-1 focus:outline-none focus:border-ink dark:focus:border-white transition-colors cursor-pointer"
+              className="bg-transparent border-b border-slate-300 dark:border-slate-700 text-navy dark:text-white text-sm font-semibold py-1 focus:outline-none focus:border-orange-500 transition-colors cursor-pointer"
             >
               <option value="featured">Featured</option>
               <option value="low">Price: Low → High</option>
@@ -146,7 +146,7 @@ export default function Inventory() {
           {hasFilters && (
             <button
               onClick={reset}
-              className="ml-auto text-xs uppercase tracking-widest font-medium text-slate-500 dark:text-slate-400 hover:text-ink dark:hover:text-white transition-colors"
+              className="ml-auto text-xs uppercase tracking-widest font-semibold text-orange-500 hover:text-orange-600 transition-colors"
             >
               Reset ×
             </button>
@@ -165,7 +165,7 @@ export default function Inventory() {
           <div className="font-display text-5xl text-slate-300 dark:text-slate-700 mb-4">
             —
           </div>
-          <h3 className="font-display text-3xl text-ink dark:text-white mb-3">
+          <h3 className="font-display text-3xl text-navy dark:text-white mb-3">
             Nothing matches those filters.
           </h3>
           <p className="text-slate-500 dark:text-slate-400 mb-8 max-w-sm mx-auto">
@@ -173,8 +173,7 @@ export default function Inventory() {
           </p>
           <button
             onClick={reset}
-            className="inline-flex items-center gap-2 px-6 py-3 font-medium rounded-full transition-all"
-            style={{ backgroundColor: "#0F172A", color: "#ffffff" }}
+            className="inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-full bg-orange-500 hover:bg-orange-600 text-white transition-colors"
           >
             Reset all filters
           </button>
