@@ -7,6 +7,7 @@ import Inventory from "./pages/Inventory";
 import CarDetail from "./pages/CarDetail";
 import About from "./pages/About";
 import CarMatch from "./pages/CarMatch";
+import SellYourCar from "./pages/SellYourCar";
 
 export default function App() {
   return (
@@ -21,6 +22,8 @@ export default function App() {
               <Route path="/car/:id" element={<CarDetail />} />
               <Route path="/about" element={<About />} />
               <Route path="/car-match" element={<CarMatch />} />
+              <Route path="/sell" element={<SellYourCar />} />
+              
             </Routes>
           </main>
           <Footer />

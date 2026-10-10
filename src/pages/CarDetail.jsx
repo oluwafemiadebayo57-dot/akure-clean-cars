@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { cars, formatNaira } from "../data/cars";
+import { whatsappLink, site } from "../data/site";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -238,11 +239,22 @@ export default function CarDetail() {
             </div>
 
             <div className="space-y-3 mb-8">
-              <button className="w-full px-6 py-4 font-semibold rounded-full bg-orange-500 hover:bg-orange-600 text-white transition-colors shadow-lg shadow-orange-500/20">
-                Book a test drive
-              </button>
               <a
-                href="#"
+                href={whatsappLink(
+                  `Hi ${site.brandName}, I'd like to book a test drive for the ${car.year} ${car.name} (${formatNaira(car.price)}). When are you available?`
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 font-semibold rounded-full bg-orange-500 hover:bg-orange-600 text-white transition-colors shadow-lg shadow-orange-500/20"
+              >
+                Book a test drive
+              </a>
+              <a
+                href={whatsappLink(
+                  `Hi ${site.brandName}, I'm interested in the ${car.year} ${car.name} (${formatNaira(car.price)}). Can you tell me more?`
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 font-semibold rounded-full border-2 border-slate-300 dark:border-slate-700 text-navy dark:text-white hover:border-orange-500 dark:hover:border-orange-500 hover:text-orange-500 transition-colors"
               >
                 Message on WhatsApp

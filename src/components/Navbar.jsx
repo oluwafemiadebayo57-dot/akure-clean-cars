@@ -2,11 +2,13 @@ import { Link, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
+import { whatsappLink, site } from "../data/site";
 
 const links = [
   { to: "/", label: "Home" },
   { to: "/inventory", label: "Inventory" },
   { to: "/car-match", label: "Car Match" },
+  { to: "/sell", label: "Sell Your Car" },
   { to: "/about", label: "About" },
 ];
 
@@ -42,8 +44,7 @@ export default function Navbar() {
             </svg>
           </div>
           <span className="font-display text-lg tracking-tight text-navy dark:text-white">
-            AKURE{" "}
-            <span className="text-orange-500">CLEAN CARS</span>
+            AKURE <span className="text-orange-500">CLEAN CARS</span>
           </span>
         </Link>
 
@@ -69,12 +70,16 @@ export default function Navbar() {
         {/* Right side */}
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <Link
-            to="/inventory"
+          <a
+            href={whatsappLink(
+              `Hi ${site.brandName}, I'd like to book a test drive. Which cars are available?`
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden sm:inline-flex px-5 py-2.5 rounded-full text-sm font-semibold bg-orange-500 hover:bg-orange-600 text-white transition-colors"
           >
             Book test drive
-          </Link>
+          </a>
           <button
             className="md:hidden text-navy dark:text-white text-xl w-8 h-8 flex items-center justify-center"
             onClick={() => setOpen(!open)}

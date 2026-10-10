@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import CarCard from "../components/CarCard";
 import AnimatedNumber from "../components/AnimatedNumber";
 import { cars, formatNaira } from "../data/cars";
+import { whatsappLink, site } from "../data/site";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -339,14 +340,26 @@ export default function Home() {
           </h2>
           <p className="text-white/80 mb-10 max-w-xl mx-auto leading-relaxed">
             Answer five quick questions. We'll recommend three cars from our
-            inventory — with a match score for each.
+            inventory — or chat with us directly on WhatsApp.
           </p>
-          <Link
-            to="/car-match"
-            className="inline-flex items-center gap-2 px-8 py-4 font-semibold rounded-full bg-orange-500 hover:bg-orange-600 text-white transition-colors shadow-lg shadow-orange-500/20"
-          >
-            Start Car Match <span>→</span>
-          </Link>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              to="/car-match"
+              className="inline-flex items-center gap-2 px-8 py-4 font-semibold rounded-full bg-orange-500 hover:bg-orange-600 text-white transition-colors shadow-lg shadow-orange-500/20"
+            >
+              Start Car Match <span>→</span>
+            </Link>
+            <a
+              href={whatsappLink(
+                `Hi ${site.brandName}, I'd like to talk about the cars in your inventory.`
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 font-semibold rounded-full border-2 border-white/30 text-white hover:border-white transition-colors"
+            >
+              Chat on WhatsApp
+            </a>
+          </div>
         </div>
       </motion.section>
     </div>
